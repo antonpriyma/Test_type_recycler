@@ -11,13 +11,13 @@ import android.util.Log;
 
 import java.util.Calendar;
 
-public class MyService extends Service {
+public class NotificationService extends Service {
     private static final String NOTIFICATION_STATE = "notification_state";
     private boolean notificationState;
     private Intent myIntent;
     private PendingIntent pendingIntent;
     private AlarmManager manager;
-    public MyService() {
+    public NotificationService() {
     }
 
     @Override
@@ -80,6 +80,6 @@ public class MyService extends Service {
         if(!isRepeat)
             manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
         else
-            manager.setRepeating(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime(), 30000,pendingIntent);
+            manager.setRepeating(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime(), AlarmManager.INTERVAL_HALF_DAY,pendingIntent);
     }
 }

@@ -42,13 +42,26 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
             Notification notification = builder.build();
             nm.notify(1,notification);
 
+        }else {
+            Intent nextIntent = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context,
+                    0, nextIntent, 0);
+
+            NotificationCompat.Builder builder =
+                    new NotificationCompat.Builder(context, CHANNEL_ID)
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setContentTitle("Напоминание")
+                            .setContentText("Новые собаки ждут!")
+                            .setContentIntent(pendingIntent);
+            Notification notification = builder.build();
+            nm.notify(1,notification);
         }
     }
 
 //    private void loadDog(final Context context){
 //
 //
-//        NetworkService.getInstance().getJSONApi().getDog("1").enqueue(new Callback<ApiResponse>() {
+//        NetworkController.getInstance().getJSONApi().getDog("1").enqueue(new Callback<ApiResponse>() {
 //            @Override
 //            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
 //                if (response.isSuccessful()) {

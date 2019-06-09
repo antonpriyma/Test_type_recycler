@@ -28,12 +28,12 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    Intent i = new Intent(getApplicationContext(),MyService.class);
+                    Intent i = new Intent(getApplicationContext(),NotificationService.class);
                     i.putExtra(NOTIFICATION_STATE,true);
                     getApplicationContext().startService(i);
                     notificationState=true;
                 } else {
-                    Intent i = new Intent(getApplicationContext(),MyService.class);
+                    Intent i = new Intent(getApplicationContext(),NotificationService.class);
                     getApplicationContext().stopService(i);
                     i.putExtra(NOTIFICATION_STATE,false);
                     getApplicationContext().startService(i);

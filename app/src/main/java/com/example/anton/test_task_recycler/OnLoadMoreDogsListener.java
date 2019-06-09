@@ -1,7 +1,6 @@
 package com.example.anton.test_task_recycler;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,15 +27,10 @@ public class OnLoadMoreDogsListener implements OnLoadMoreListener {
     @Override
     public void onLoadMore() {
         isLoading=true;
-            NetworkService.getInstance().getJSONApi().getDog("10").enqueue(new Callback<ApiResponse>() {
+            NetworkController.getInstance().getJSONApi().getDog("10").enqueue(new Callback<ApiResponse>() {
                 @Override
                 public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                     if (response.isSuccessful()) {
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
                         list.remove(list.size()-1);
                         ApiResponse responseBody = response.body();
                         for (URL url: responseBody.getUrls()){

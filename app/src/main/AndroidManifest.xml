@@ -35,7 +35,7 @@
         <receiver android:name=".AlarmNotificationReceiver"/>
 
         <service
-            android:name=".MyService"
+            android:name=".NotificationService"
             android:enabled="true"
             android:exported="true" />
     </application>
