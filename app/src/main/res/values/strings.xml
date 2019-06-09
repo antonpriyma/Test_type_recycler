@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Test_task_recycler</string>
+    <string name="bulldog_string">bulldog</string>
+    <string name="settings_string">settings</string>
+    <string name="notificate_string">Уведомления</string>
+</resources>
